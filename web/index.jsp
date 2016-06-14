@@ -7,6 +7,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <%//jquery link%>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
+        <% //Hacer algo despues de cargar el jquery%>
+        <script>
+                $(document).ready(function(){
+                   console.log("hiiiiiiii");
+                   
+                   
+                });
+        </script>        
     </head>
     <body>
       
@@ -75,6 +87,9 @@
             </select>
                 
            <br><br><br>
-    </table>
+    
+           Asignar tarea: <input type="text">
     </body>
+    
+    
 </html>
