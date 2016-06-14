@@ -17,15 +17,20 @@
         <script>
                 $(document).ready(function(){
                    $("#servicios").change(function(){
-                           alert("Servicio cambiado!");
-                            });
+                        var servicio_id = $("servicios").val();
+                        alert ("ID Servicio" +servicio_id);
     
                    $("#unidades").change(function(){
-                       alert("Unidades cambiada!");
-                               } );
+                       var unidad_id = $("unidades").val();
+                        alert ("ID Servicio" +unidad_id);
+                               
+    
+    
+                    } );
                   
                    $("#responsables").change(function(){
-                       alert("Responsables cambiada!");
+                       var responsable_id = $("responsables").val();
+                        alert ("ID Servicio" +responsable_id);
                                } );            
                   
                   
@@ -46,7 +51,7 @@
                 <select id="servicios">
                 <% while(con.getResultado().next()){%>
              
-                <option><% out.println(con.getResultado().getString("nombre")); %>  </option>
+                <option value="<% out.println(con.getResultado().getString("servicio_id")); %>"> <% out.println(con.getResultado().getString("nombre")); %>  </option>
               
                 <% } %>
             
@@ -66,7 +71,7 @@
              <select id="unidades">
                 <% while(con.getResultado().next()){%>
              
-                <option><% out.println(con.getResultado().getString("nombre")); %>  </option>
+                <option value="<% out.println(con.getResultado().getString("unidad_id")); %>"> <% out.println(con.getResultado().getString("nombre")); %> </option>
               
                 <% } %>
             
@@ -92,8 +97,8 @@
              <select id="responsables">
                 <% while(con.getResultado().next()){%>
              
-                <option><% out.println(con.getResultado().getString("nombre")); %>  </option>
-              
+                <option value="<% out.println(con.getResultado().getString("reponsable_id")); %>"> <% out.println(con.getResultado().getString("nombre")); %> </option>
+               
                 <% } %>
             
             </select>

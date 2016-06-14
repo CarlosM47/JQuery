@@ -16,13 +16,6 @@ public class Servicios {
 int servicio_id;
 String nombre, estado;
 
-Coneccion con;
-
-public Servicios(){
-    
-    con = new Coneccion();
-    
-}
 
     public int getServicio_id() {
         return servicio_id;
