@@ -45,7 +45,7 @@ public class Tarea extends HttpServlet {
             }
              
              
-             // variable json con arraylist
+             // vadriable json con arraylist
             String json= new Gson().toJson(lista);
             
             //setear aplicacion json
