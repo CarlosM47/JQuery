@@ -13,21 +13,21 @@
         
         <% //Hacer algo despues de cargar el jquery%>
          <% //Mete en el valor tarea%>
+         <% //Variable change%>
         <script>
                 $(document).ready(function(){
-                   $("#guardar").click(function(){
-                       
-                       $("#tarea").val("Boton Presionado");
-                       
-                   });
-                   
-                   $("#ocultar").click(function(){
-                         $("#tarea").hide();
-                   }); 
-                   
-                   $("#mostrar").click(function(){
-                         $("#tarea").show();
-                   }); 
+                   $("#servicios").change(function(){
+                           alert("Servicio cambiado!");
+                            });
+    
+                   $("#unidades").change(function(){
+                       alert("Unidades cambiada!");
+                               } );
+                  
+                   $("#responsables").change(function(){
+                       alert("Responsables cambiada!");
+                               } );            
+                  
                   
                 });
         </script>        
@@ -43,7 +43,7 @@
             %>
         
               
-                <select>
+                <select id="servicios">
                 <% while(con.getResultado().next()){%>
              
                 <option><% out.println(con.getResultado().getString("nombre")); %>  </option>
@@ -63,7 +63,7 @@
             %>
     
             
-             <select>
+             <select id="unidades">
                 <% while(con.getResultado().next()){%>
              
                 <option><% out.println(con.getResultado().getString("nombre")); %>  </option>
@@ -89,7 +89,7 @@
             %>
                 
             
-             <select>
+             <select id="responsables">
                 <% while(con.getResultado().next()){%>
              
                 <option><% out.println(con.getResultado().getString("nombre")); %>  </option>
