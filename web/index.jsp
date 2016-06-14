@@ -16,66 +16,47 @@
          <% //Variable change%>
         <script>
                 $(document).ready(function(){
-                   $("#servicios").change(function(){
-                        var servicio_id = $("servicios").val();
-                        alert ("ID Servicio" +servicio_id);
-    
-                   $("#unidades").change(function(){
-                       var unidad_id = $("unidades").val();
-                        alert ("ID Servicio" +unidad_id);
-                               
+                   
+                       $.get("http://localhost:8080/AppJava01/Tarea", function(data, status){
+                       $.each(data, function (i , item)   {    
+                         $('#servicios').append('<option value=' + item.unidad_id + '>' + item.nombre+ '</option>');
     
     
-                    } );
-                  
-                   $("#responsables").change(function(){
-                       var responsable_id = $("responsables").val();
-                        alert ("ID Servicio" +responsable_id);
-                               } );            
+    
+    });     
+        
+        
                   
                   
                 });
+                
+    });
         </script>        
     </head>
     <body>
       
-            <%
-                Coneccion con = new Coneccion();
-                
-                con.setConsulta("select * from servicios");
-                    
-              
-            %>
-        
+
               
                 <select id="servicios">
-                <% while(con.getResultado().next()){%>
              
-                <option value="<% out.println(con.getResultado().getString("servicio_id")); %>"> <% out.println(con.getResultado().getString("nombre")); %>  </option>
-              
-                <% } %>
             
-            </select>
-                <br><br><br>
+               </select>
+           
+        
+        
+        
+        
+        
+        
+        
+        <br><br><br>
    
     
-             <%
-               
-                
-                con.setConsulta("select * from unidades");
-                    
-              
-            %>
     
             
              <select id="unidades">
-                <% while(con.getResultado().next()){%>
-             
-                <option value="<% out.println(con.getResultado().getString("unidad_id")); %>"> <% out.println(con.getResultado().getString("nombre")); %> </option>
-              
-                <% } %>
-            
-            </select>
+               
+             </select>
         
           
                 
@@ -85,28 +66,24 @@
            <br><br><br>
             
             
-            <%
-                
-                
-                con.setConsulta("select * from responsables");
-                    
-              
-            %>
-                
+          
             
              <select id="responsables">
-                <% while(con.getResultado().next()){%>
-             
-                <option value="<% out.println(con.getResultado().getString("reponsable_id")); %>"> <% out.println(con.getResultado().getString("nombre")); %> </option>
-               
-                <% } %>
-            
-            </select>
                 
+             
+             </select>
+                
+           
+           
+           
+           
+           
+           
+           
            <br><br><br>
     
-           Asignar tarea: <input type="text" id="tarea">
-           <br>
+            Asignar tarea: <input type="text" id="tarea">
+            <br>
            <input type="button" value="Guardar" id="guardar">
             <input type="button" value="Ocular" id="ocultar">
              <input type="button" value="Mostrar" id="mostrar">
