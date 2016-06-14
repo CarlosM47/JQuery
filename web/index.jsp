@@ -19,7 +19,7 @@
                        
                        $("#tarea").val("Boton Presionado");
                        
-                   }
+                   });
                    
                    
                 });
