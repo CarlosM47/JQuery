@@ -21,7 +21,14 @@
                        
                    });
                    
+                   $("#ocultar").click(function(){
+                         $("#tarea").hide();
+                   }); 
                    
+                   $("#mostrar").click(function(){
+                         $("#tarea").show();
+                   }); 
+                  
                 });
         </script>        
     </head>
@@ -96,6 +103,8 @@
            Asignar tarea: <input type="text" id="tarea">
            <br>
            <input type="button" value="Guardar" id="guardar">
+            <input type="button" value="Ocular" id="ocultar">
+             <input type="button" value="Mostrar" id="mostrar">
     
     </body>
     
