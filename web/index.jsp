@@ -12,9 +12,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         
         <% //Hacer algo despues de cargar el jquery%>
+         <% //Mete en el valor tarea%>
         <script>
                 $(document).ready(function(){
-                   console.log("hiiiiiiii");
+                   $("#guardar").click(function(){
+                       
+                       $("#tarea").val("Boton Presionado");
+                       
+                   }
                    
                    
                 });
@@ -88,7 +93,10 @@
                 
            <br><br><br>
     
-           Asignar tarea: <input type="text">
+           Asignar tarea: <input type="text" id="tarea">
+           <br>
+           <input type="button" value="Guardar" id="guardar">
+    
     </body>
     
     
