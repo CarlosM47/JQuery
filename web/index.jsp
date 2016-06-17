@@ -115,7 +115,7 @@
                    
                        $.get("http://localhost:8080/AppJava01/Tarea", function(data, status){
                        $.each(data, function (i , item)   {    
-                         $('#servicios').append('<option value=' + item.unidad_id + '>' + item.nombre+ '</option>');
+                         $('#servicios').append('<option value=' + item.servicio_id + '>' + item.nombre+ '</option>');
     
     
     
@@ -129,7 +129,7 @@
                //Alerta despues de seleccionar un servicio. se muestra el id del elemento
                 $("#servicios").change(function(){
                     var servicio_id=$("#servicios").val();
-                    alert(servicio_id);
+                    alert(""+servicio_id);
                   });
     
     
