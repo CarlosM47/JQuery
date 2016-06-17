@@ -126,9 +126,10 @@
                   
                 });
                
-               //Alerta despues de seleccionar un servicio
+               //Alerta despues de seleccionar un servicio. se muestra el id del elemento
                 $("#servicios").change(function(){
-                    alert("Mensaje");
+                    var servicio_id=$("#servicios").val();
+                    alert(servicio_id);
                   });
     
     
