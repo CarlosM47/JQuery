@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
      <!--CDD : ENCONTRADO EN http://getbootstrap.com/getting-started/ -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="starter-template.css" rel="stylesheet">
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
@@ -106,12 +106,13 @@
     </div><!-- /.container -->
 
 
-  
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script>
-                $(document).ready(function(){
+            $('select').select2();  
+            $(document).ready(function(){
                    
                        $.get("http://localhost:8080/AppJava01/Tarea", function(data, status){
                        $.each(data, function (i , item)   {    
@@ -127,10 +128,18 @@
                 });
                
                //Alerta despues de seleccionar un servicio. se muestra el id del elemento
+               //Selecciona servicio y ordena las unidades que estan realcionadas con el servicio
                 $("#servicios").change(function(){
                     var servicio_id=$("#servicios").val();
                     alert(""+servicio_id);
-                  });
+               
+                    $.get("http://localhost:8080/AppJava01/Tarea?servicio_id="+servicio_id, function (data, status) {
+                    $.each(data, function (i, item) {
+                         $('#unidades').append('<option value=' + item.unidad_id + '>' + item.nombre + '</option>');
+                     });
+    
+    
+            });
     
     
     });
