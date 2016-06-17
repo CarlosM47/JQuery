@@ -125,7 +125,13 @@
                   
                   
                 });
-                
+               
+               //Alerta despues de seleccionar un servicio
+                $("#servicios").change(function(){
+                    alert("Mensaje");
+                  });
+    
+    
     });
         </script>      
   
