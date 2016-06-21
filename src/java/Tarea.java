@@ -28,32 +28,25 @@ public class Tarea extends HttpServlet {
              //Coneccion
               //Se crean los if
              Coneccion con= new Coneccion();
-           
-             if(request.getParameter("servicio_id")!=null){
+            if(request.getParameter("servicio_id")!=null){
         
                  String servicio_id=request.getParameter("servicio_id");
-                 
                  con.setConsulta("select * from Unidades where servicio_id = '" +servicio_id+"'");
-             ArrayList lista=new ArrayList();
-             
-            try {
-                while (con.getResultado().next()){
-                    Servicios serv = new Servicios();
-                    serv.setServicio_id(con.getResultado().getInt("servicio_id"));
-                    serv.setNombre(con.getResultado().getString("nombre"));
-                    serv.setEstado(con.getResultado().getString("estado"));
-                    lista.add(serv);
-                    
-                    
-                }
-            } catch (SQLException ex) {
-                
-            }
+                 ArrayList lista=new ArrayList();
+                 try {
+                          while (con.getResultado().next()){
+                          Servicios serv = new Servicios();
+                          serv.setServicio_id(con.getResultado().getInt("servicio_id"));
+                          serv.setNombre(con.getResultado().getString("nombre"));
+                          serv.setEstado(con.getResultado().getString("estado"));
+                          lista.add(serv);
+                          }
+                     } catch (SQLException ex) {
+                       }
              
              
              // vadriable json con arraylist
             String json= new Gson().toJson(lista);
-            
             //setear aplicacion json
             response.setContentType("application/json");
             //encodear a utf8
@@ -62,33 +55,22 @@ public class Tarea extends HttpServlet {
             response.getWriter().write(json);
                  
                  
-                 
-           
+           }else{
              
+              con.setConsulta("select * from servicios");
+              ArrayList lista=new ArrayList();
              
-             
-             
-             }else{
-             
-         
-                 
-                 
-                 
-             con.setConsulta("select * from servicios");
-             ArrayList lista=new ArrayList();
-             
-            try {
-                while (con.getResultado().next()){
-                    Servicios serv = new Servicios();
-                    serv.setServicio_id(con.getResultado().getInt("servicio_id"));
-                    serv.setNombre(con.getResultado().getString("nombre"));
-                    serv.setEstado(con.getResultado().getString("estado"));
-                    lista.add(serv);
-                    
-                    
-                }
-            } catch (SQLException ex) {
-             // vadriable json con arraylist
+                try {
+                        while (con.getResultado().next()){
+                        Servicios serv = new Servicios();
+                        serv.setServicio_id(con.getResultado().getInt("servicio_id"));
+                        serv.setNombre(con.getResultado().getString("nombre"));
+                        serv.setEstado(con.getResultado().getString("estado"));
+                        lista.add(serv);
+                        }
+                     } catch (SQLException ex) {
+                           }
+                         // vadriable json con arraylist
             String json= new Gson().toJson(lista);
             
             //setear aplicacion json
@@ -97,7 +79,7 @@ public class Tarea extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             //mostrar o imprimir el json
             response.getWriter().write(json);     
-            }
+          
              
              
            
